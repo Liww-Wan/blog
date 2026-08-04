@@ -25,4 +25,21 @@ social-email: # add your Email address
 giscus-repo: # e.g. your-username/your-repo
 giscus-repo-id: # from giscus.app
 giscus-category: # e.g. "General" or "Comments"
-giscus-cate
+giscus-category-id: # from giscus.app
+
+# Tracker
+analytics: # Google Analytics
+
+# Build Settings
+markdown: kramdown
+sass:
+  sass_dir: assets/css/scss
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
