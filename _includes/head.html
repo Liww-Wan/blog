@@ -12,6 +12,12 @@
 			}
 		})();
 	</script>
+	<script>
+		// URL of the custom giscus dark theme, used by comments.html and
+		// theme-toggle.js to keep the comment widget's colors matching the
+		// site's dark palette.
+		window.GISCUS_DARK_THEME = "{{ '/assets/css/giscus-dark.css' | absolute_url }}";
+	</script>
 	<title>{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}</title>
 
   <!-- Edit site and author settings in `_config.yml` to make the social details your own -->

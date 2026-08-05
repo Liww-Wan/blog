@@ -15,8 +15,11 @@
         s.setAttribute('data-emit-metadata', '0');
         s.setAttribute('data-input-position', 'bottom');
         // Load with whichever theme the page is already in, so comments
-        // don't flash light before switching to dark.
-        var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        // don't flash light before switching to dark. The dark variant uses
+        // a custom giscus theme so its colors match the site's dark palette
+        // exactly, instead of giscus's built-in (different) dark preset.
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var theme = isDark ? (window.GISCUS_DARK_THEME || 'dark') : 'light';
         s.setAttribute('data-theme', theme);
         s.setAttribute('data-lang', 'pt');
         s.setAttribute('crossorigin', 'anonymous');

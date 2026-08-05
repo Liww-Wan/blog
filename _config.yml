@@ -22,16 +22,18 @@ social-email: # add your Email address
 # Fill these in after enabling Discussions on your repo and installing
 # the giscus app: https://github.com/apps/giscus
 # Then generate the exact values at https://giscus.app
-giscus-repo: # e.g. your-username/your-repo
-giscus-repo-id: # from giscus.app
-giscus-category: # e.g. "General" or "Comments"
-giscus-category-id: # from giscus.app
+giscus-repo: Liww-Wan/blog
+giscus-repo-id: R_kgDOTtdPOQ
+giscus-category: Comentários
+giscus-category-id: DIC_kwDOTtdPOc4DCo-c
 
 # Tracker
 analytics: # Google Analytics
 
 # Build Settings
 markdown: kramdown
+sass:
+  sass_dir: assets/css/scss
 plugins:
   - jekyll-sitemap
   - jekyll-paginate

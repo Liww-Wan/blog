@@ -20,11 +20,15 @@
   }
 
   // Tell an already-loaded giscus comment widget to switch theme too.
+  // The dark variant points at a custom giscus theme (window.GISCUS_DARK_THEME,
+  // set in head.html) so the widget matches the site's exact dark palette
+  // instead of giscus's built-in dark preset.
   function syncGiscusTheme(theme) {
     var frame = document.querySelector('iframe.giscus-frame');
     if (!frame) return;
+    var giscusTheme = theme === 'dark' ? (window.GISCUS_DARK_THEME || 'dark') : 'light';
     frame.contentWindow.postMessage(
-      { giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } },
+      { giscus: { setConfig: { theme: giscusTheme } } },
       'https://giscus.app'
     );
   }
