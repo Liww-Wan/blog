@@ -1,8 +1,7 @@
 title: Hello, world! I'm David Freeman
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+Nem toda informação muda sua vida. Mas algumas vão render uma boa conversa.
+Curiosidades, tecnologia e muito conteúdo fora do óbvio.
 permalink: ':title/'
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://liww-wan.github.io" # the base hostname & protocol for your site, e.g. http://example.com
