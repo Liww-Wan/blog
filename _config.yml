@@ -1,38 +1,43 @@
 title: Hello, world! I'm David Freeman
-description: > # this means to ignore newlines until "baseurl:"
-Nem toda informação muda sua vida. Mas algumas vão render uma boa conversa.
-Curiosidades, tecnologia e muito conteúdo fora do óbvio.
+
+description: >
+  Nem toda informação muda sua vida. Mas algumas vão render uma boa conversa.
+  Curiosidades, tecnologia e muito conteúdo fora do óbvio.
+
 permalink: ':title/'
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "https://liww-wan.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-site-twitter: #if your site has a twitter account, enter it here
+
+baseurl: "/blog"
+url: "https://liww-wan.github.io"
+
+site-twitter:
 
 # Author Settings
-author: Liw-Wlin # add your name
-author-img: david-freeman.jpg # add your photo
-about-author: Escrevo sobre tecnologia, curiosidades inúteis que viram úteis e a eterna disputa entre café e sono. # add description
-social-twitter: # add your Twitter handle
-social-facebook: # add your Facebook handle
-social-github: artemsheludko # add your Github handle
-social-linkedin: # add your Linkedin handle
-social-email: # add your Email address
+author: Liw-Wlin
+author-img: david-freeman.jpg
+about-author: >
+  Escrevo sobre tecnologia, curiosidades inúteis que viram úteis e a eterna disputa entre café e sono.
 
-# Comments (giscus - free, no ads, backed by GitHub Discussions)
-# Fill these in after enabling Discussions on your repo and installing
-# the giscus app: https://github.com/apps/giscus
-# Then generate the exact values at https://giscus.app
+social-twitter:
+social-facebook:
+social-github: artemsheludko
+social-linkedin:
+social-email:
+
+# Comments (giscus)
 giscus-repo: Liww-Wan/blog
 giscus-repo-id: R_kgDOTtdPOQ
 giscus-category: Comentários
 giscus-category-id: DIC_kwDOTtdPOc4DCo-c
 
 # Tracker
-analytics: # Google Analytics
+analytics:
 
 # Build Settings
 markdown: kramdown
+
 sass:
   sass_dir: assets/css/scss
+
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
@@ -41,4 +46,8 @@ plugins:
 paginate: 8
 paginate_path: "/page/:num"
 
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+exclude:
+  - node_modules
+  - gulpfile.js
+  - package.json
+  - yarn.lock
