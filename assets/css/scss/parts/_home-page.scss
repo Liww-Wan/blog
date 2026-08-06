@@ -11,10 +11,14 @@
   padding: 20px 10px;
   background-color: $surface;
 }
-.theme-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.sidebar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.icon-btn {
+  position: relative;
   width: 34px;
   height: 34px;
   padding: 0;
@@ -35,6 +39,59 @@
   &:focus-visible {
     outline: 2px solid $dark-blue;
     outline-offset: 2px;
+  }
+}
+#bento-toggle.is-active {
+  border-color: $dark-blue;
+  color: $dark-blue;
+}
+.bento-menu {
+  margin: 16px 0;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: $dark-gray;
+    text-align: center;
+    margin: 0 0 10px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 12px 6px;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    color: $body-color;
+    font-size: 12px;
+    line-height: 1.25;
+    transition: all .2s ease;
+
+    i {
+      font-size: 18px;
+      color: $dark-blue;
+    }
+
+    &:hover {
+      border-color: $dark-blue;
+      background-color: $gray;
+    }
   }
 }
 
