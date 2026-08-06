@@ -159,6 +159,17 @@ footer {
     text-align: center;
     margin: 0;
   }
+  .legal-links {
+    font-size: 11px;
+    text-align: center;
+    margin: 6px 0 0;
+    a {
+      color: var(--color-muted);
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
 }
 
 .post {
