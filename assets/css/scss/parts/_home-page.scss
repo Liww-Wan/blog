@@ -64,7 +64,7 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
@@ -75,17 +75,17 @@
     justify-content: center;
     gap: 6px;
     text-align: center;
-    padding: 12px 6px;
+    padding: 14px 6px;
     border: 1px solid $gray;
     border-radius: 10px;
-    color: $body-color;
+    color: $dark-gray;
     font-size: 12px;
     line-height: 1.25;
     transition: all .2s ease;
 
     i {
-      font-size: 18px;
-      color: $dark-blue;
+      font-size: 17px;
+      color: $dark;
     }
 
     &:hover {

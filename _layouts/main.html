@@ -32,18 +32,6 @@ layout: default
         <i class="fa fa-tags" aria-hidden="true"></i>
         <span>Tags</span>
       </a>
-      <a href="{{ "/disclaimer/" | prepend: site.baseurl }}" class="bento-menu__item">
-        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-        <span>Isenção de Responsabilidade</span>
-      </a>
-      <a href="{{ "/terms-of-use/" | prepend: site.baseurl }}" class="bento-menu__item">
-        <i class="fa fa-file-text-o" aria-hidden="true"></i>
-        <span>Termos de Uso</span>
-      </a>
-      <a href="{{ "/privacy-policy/" | prepend: site.baseurl }}" class="bento-menu__item">
-        <i class="fa fa-lock" aria-hidden="true"></i>
-        <span>Política de Privacidade</span>
-      </a>
       <a href="{{ "/about/" | prepend: site.baseurl }}" class="bento-menu__item">
         <i class="fa fa-user-o" aria-hidden="true"></i>
         <span>Sobre</span>
@@ -85,7 +73,13 @@ layout: default
     <div class="copyright">
       <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
       <p class="legal-links">
-        <a href="#" id="cookie-settings-link">Configurações de cookies</a>
+        <a href="{{ "/privacy-policy/" | prepend: site.baseurl }}">Privacidade</a>
+        &nbsp;·&nbsp;
+        <a href="{{ "/terms-of-use/" | prepend: site.baseurl }}">Termos</a>
+        &nbsp;·&nbsp;
+        <a href="{{ "/disclaimer/" | prepend: site.baseurl }}">Isenção de responsabilidade</a>
+        &nbsp;·&nbsp;
+        <a href="#" id="cookie-settings-link">Cookies</a>
       </p>
     </div>
   </footer> <!-- End Footer -->
