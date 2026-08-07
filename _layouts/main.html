@@ -3,35 +3,9 @@ layout: default
 ---
 
 <aside class="sidebar" aria-label="Sobre e contato">
-  <div class="sidebar-topbar-wrap">
-    <div class="sidebar-topbar">
-      <button id="bento-toggle" class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="bento-menu" aria-label="Abrir menu de navegação">
-        <i class="fa fa-th" aria-hidden="true"></i>
-      </button>
-      <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
-        <i class="fa fa-moon-o" aria-hidden="true"></i>
-      </button>
-    </div>
-
-    <nav id="bento-menu" class="bento-menu" aria-label="Navegação do site" hidden>
-      <p class="bento-menu__title">Navegação</p>
-      <div class="bento-menu__grid">
-        <a href="{{ site.baseurl }}/" class="bento-menu__item">
-          <i class="fa fa-home" aria-hidden="true"></i>
-          <span>Início</span>
-        </a>
-        <a href="{{ "/tags/" | prepend: site.baseurl }}" class="bento-menu__item">
-          <i class="fa fa-tags" aria-hidden="true"></i>
-          <span>Tags</span>
-        </a>
-        <a href="{{ "/about/" | prepend: site.baseurl }}" class="bento-menu__item">
-          <i class="fa fa-user-o" aria-hidden="true"></i>
-          <span>Sobre</span>
-        </a>
-      </div>
-    </nav> <!-- End Bento Menu -->
-  </div> <!-- End Topbar Wrap -->
-
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </button>
   <header>
     <div class="about">
       <div class="cover-author-image">
@@ -41,7 +15,6 @@ layout: default
       <p>{{site.about-author}}</p>
     </div>
   </header> <!-- End Header -->
-
   <footer>
     <section class="contact">
       <h3 class="contact-title">Contato</h3>
@@ -75,15 +48,6 @@ layout: default
     </section> <!-- End Section Contact -->
     <div class="copyright">
       <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
-      <p class="legal-links">
-        <a href="{{ "/privacy-policy/" | prepend: site.baseurl }}">Privacidade</a>
-        &nbsp;·&nbsp;
-        <a href="{{ "/terms-of-use/" | prepend: site.baseurl }}">Termos</a>
-        &nbsp;·&nbsp;
-        <a href="{{ "/disclaimer/" | prepend: site.baseurl }}">Isenção de responsabilidade</a>
-        &nbsp;·&nbsp;
-        <a href="#" id="cookie-settings-link">Cookies</a>
-      </p>
     </div>
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
