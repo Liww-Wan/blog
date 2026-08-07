@@ -11,11 +11,14 @@
   padding: 20px 10px;
   background-color: $surface;
 }
+.sidebar-topbar-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
 .sidebar-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 .icon-btn {
   position: relative;
@@ -46,7 +49,16 @@
   color: $dark-blue;
 }
 .bento-menu {
-  margin: 16px 0;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: $surface;
+  border: 1px solid $gray;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 30px var(--color-shadow);
 
   &[hidden] {
     display: none;
