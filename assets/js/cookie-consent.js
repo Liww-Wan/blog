@@ -3,13 +3,12 @@
   var banner = document.getElementById('cookie-consent');
   if (!banner) return;
 
-  var acceptBtn = document.getElementById('cookie-accept');
-  var declineBtn = document.getElementById('cookie-decline');
-  var settingsLink = document.getElementById('cookie-settings-link');
+  var acceptBtn = document.getElementById('cookie-consent-accept');
+  var declineBtn = document.getElementById('cookie-consent-decline');
 
   function getConsent() {
     try {
-      return window.localStorage.getItem(STORAGE_KEY);
+      return localStorage.getItem(STORAGE_KEY);
     } catch (e) {
       return null;
     }
@@ -17,47 +16,42 @@
 
   function setConsent(value) {
     try {
-      window.localStorage.setItem(STORAGE_KEY, value);
-    } catch (e) {}
-  }
-
-  function showBanner() {
-    banner.hidden = false;
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (e) {
+      // localStorage indisponível (modo privado, etc.) — o banner
+      // voltará a aparecer na próxima visita, o que é um fallback aceitável.
+    }
+    document.dispatchEvent(new CustomEvent('cookieconsentchange', { detail: { consent: value } }));
   }
 
   function hideBanner() {
     banner.hidden = true;
   }
 
-  // Exposto globalmente para o snippet do AdSense (ou qualquer outro
-  // script de terceiros) verificar antes de carregar.
-  // Uso: if (window.hasAdConsent()) { /* injeta o script do AdSense aqui */ }
-  window.hasAdConsent = function () {
-    return getConsent() === 'accepted';
-  };
+  function showBanner() {
+    banner.hidden = false;
+  }
+
+  var existing = getConsent();
+  if (existing === 'accepted' || existing === 'declined') {
+    hideBanner();
+    // Ainda dispara o evento no carregamento para que scripts que dependem
+    // do consentimento (ex.: analytics.html) saibam a escolha já feita.
+    document.dispatchEvent(new CustomEvent('cookieconsentchange', { detail: { consent: existing } }));
+  } else {
+    showBanner();
+  }
 
   acceptBtn.addEventListener('click', function () {
     setConsent('accepted');
     hideBanner();
-    // Avisa o resto da pagina que o consentimento foi dado agora,
-    // caso o script de anuncios precise ser carregado dinamicamente.
-    document.dispatchEvent(new CustomEvent('cookie-consent-accepted'));
   });
 
   declineBtn.addEventListener('click', function () {
     setConsent('declined');
     hideBanner();
-    document.dispatchEvent(new CustomEvent('cookie-consent-declined'));
   });
 
-  if (settingsLink) {
-    settingsLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      showBanner();
-    });
-  }
-
-  if (getConsent() === null) {
-    showBanner();
-  }
+  // Helper global simples para outros scripts consultarem o estado atual.
+  window.getCookieConsent = getConsent;
 })();

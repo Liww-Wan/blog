@@ -159,6 +159,24 @@ footer {
     text-align: center;
     margin: 0;
   }
+  .legal-links {
+    display: block;
+    text-align: center;
+    margin: 6px 0 0;
+    font-size: 11px;
+    a {
+      color: $dark-gray;
+      text-decoration: none;
+      &:hover {
+        color: $body-color;
+        text-decoration: underline;
+      }
+    }
+    span {
+      margin: 0 4px;
+      color: $dark-gray;
+    }
+  }
 }
 
 .post {
