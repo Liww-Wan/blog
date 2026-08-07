@@ -165,7 +165,7 @@ footer {
     margin: 14px 0 0;
     font-size: 11px;
     a {
-      color: $dark-gray;
+      color: var(--color-muted-strong);
       text-decoration: none;
       &:hover {
         color: $body-color;
@@ -174,7 +174,7 @@ footer {
     }
     span {
       margin: 0 4px;
-      color: $dark-gray;
+      color: var(--color-muted-strong);
     }
   }
 }
