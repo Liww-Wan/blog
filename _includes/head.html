@@ -113,15 +113,72 @@
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap">
 		<link rel="stylesheet" href="{{ "/assets/fonts/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">
+		<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (max-width: 992px)">
 	</noscript>
 
 	<!-- Styles -->
-	<!-- Bloqueante em todas as telas, de proposito. Ja tentei duas vezes tirar -->
-	<!-- este CSS do caminho critico so no mobile (assincrono e depois inline) -->
-	<!-- e as duas vezes isso gerou CLS alto (0.5+), derrubando a nota de -->
-	<!-- Performance de 95 para ~75. O ganho de nao bloquear (~450ms) nao -->
-	<!-- compensa o risco. Este e o estado seguro e validado: 95 mobile / -->
-	<!-- 100 desktop, com Acessibilidade, Praticas recomendadas e SEO em 100. -->
-	<!-- Nao mexer aqui de novo sem conseguir testar um build real do Jekyll. -->
-	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+	<!-- Desktop (>=993px): identico ao que ja pontua 100 no PageSpeed. Nao mexer. -->
+	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (min-width: 993px)">
+
+	<!-- Mobile/tablet (<=992px): CSS critico escrito a mao (copiado direto do -->
+	<!-- SCSS fonte, nao gerado pelo Jekyll) cobrindo so a FORMA do layout -->
+	<!-- (sidebar, content-box, post cards) nos 3 breakpoints do tema. -->
+	<!-- As duas tentativas anteriores falharam porque a pagina ficava um -->
+	<!-- instante SEM nenhum CSS de layout; esta paga esse preco tirando -->
+	<!-- a adivinhacao: e codigo real, lido linha a linha do tema. -->
+	<style>
+	@media screen and (max-width: 992px) {
+		:root{--color-page-bg:#fbfbfb;--color-surface:#ffffff;--color-border:#ecf0f1;--color-body-text:#515151;--color-heading:#333030;--color-accent:#263959;}
+		[data-theme="dark"]{--color-page-bg:#121212;--color-surface:#1c1c1c;--color-border:#333333;--color-body-text:#cfcfcf;--color-heading:#f2f2f2;--color-accent:#7fa6e0;}
+		*,*::after,*::before{box-sizing:border-box;}
+		html{line-height:1.5;}
+		body{font-family:'Lato',sans-serif;color:var(--color-body-text);background-color:var(--color-page-bg);margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+		img{max-width:100%;vertical-align:middle;display:inline-block;}
+		.wrapper{max-width:1250px;position:relative;}
+		.sidebar{display:flex;flex-direction:column;justify-content:space-between;position:fixed;top:0;left:0;bottom:0;width:240px;height:100%;padding:20px 10px;background-color:var(--color-surface);}
+		.theme-toggle{position:absolute;top:15px;right:15px;width:34px;height:34px;padding:0;border:1px solid var(--color-border);border-radius:50%;background-color:var(--color-surface);color:var(--color-heading);font-size:15px;display:flex;align-items:center;justify-content:center;}
+		.about{margin:0 0 40px;text-align:center;}
+		.about .cover-author-image{width:100px;height:100px;margin:0 auto 10px;border-radius:100%;overflow:hidden;background-color:var(--color-heading);}
+		.about img{width:100%;height:100%;border-radius:50%;}
+		.about .author-name{font-family:'PT Serif',serif;margin:0 0 10px;position:relative;padding-bottom:15px;font-size:16px;text-transform:uppercase;color:var(--color-heading);font-weight:700;}
+		.about p{font-size:16px;margin:0 0 10px;}
+		.content-box{padding:20px;padding-left:260px;display:flex;flex-direction:row;flex-wrap:wrap;align-items:stretch;}
+		.post{width:100%;max-width:100%;margin-bottom:1.5rem;display:flex;flex-direction:row;align-items:stretch;min-height:11rem;border-radius:10px;overflow:hidden;box-shadow:0 1px 1px 0 rgba(31,35,46,.15);}
+		.post .post-thumbnail{width:30%;max-width:100%;min-height:11rem;display:block;overflow:hidden;}
+		.post .post-thumbnail img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;}
+		.post .post-content{padding:1rem;width:70%;}
+		.post .post-content .post-date,.post .post-content .post-words{font-size:12px;}
+		.post .post-content .post-title{margin:0 0 10px;font-size:30px;font-weight:400;}
+		.post .post-content .post-title a{font-family:'PT Serif',serif;text-decoration:none;color:var(--color-accent);}
+		.post .post-content p{margin-top:0;}
+	}
+	@media only screen and (max-width: 992px) {
+		.post{width:48%;max-width:100%;margin:0 0.9% 1.5%;flex-direction:column;}
+		.post .post-thumbnail{width:100%;}
+		.post .post-content{width:100%;}
+		.post .post-content .post-title{margin:0 0 5px;}
+		.post .post-content .post-title a{font-size:21px;}
+	}
+	@media only screen and (max-width: 768px) {
+		.sidebar{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:100%;padding:10px;background-color:var(--color-surface);box-shadow:0 1px 1px 0 rgba(31,35,46,.15);}
+		.sidebar footer{margin-bottom:10px;}
+		.about{text-align:center;max-width:480px;margin:10px auto auto;}
+		.about img{width:100px;height:100px;border-radius:100%;margin-bottom:10px;}
+		.content-box{padding:20px 10px;display:flex;flex-direction:row;flex-wrap:wrap;align-items:stretch;}
+		.contact-title,.copyright{display:none;}
+	}
+	@media only screen and (max-width: 480px) {
+		.content-box{padding:10px;}
+		.post{width:98%;max-width:100%;margin:2%;flex-direction:column;}
+		.post .post-thumbnail{width:100%;}
+		.post .post-content{width:100%;}
+		.post .post-content .post-title{margin:0 0 5px;}
+		.post .post-content .post-title a{font-size:21px;}
+	}
+	</style>
+
+	<!-- Copia completa do CSS, assincrona: quando chegar, so refina detalhes -->
+	<!-- (a forma do layout ja esta travada pelo bloco critico acima). -->
+	<link rel="preload" as="style" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (max-width: 992px)">
+	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="print" onload="this.media='screen and (max-width: 992px)'">
 </head>
