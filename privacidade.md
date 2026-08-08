@@ -3,6 +3,7 @@ layout: legal
 title: Política de Privacidade
 permalink: /privacidade/
 updated: agosto de 2026
+img: mac.jpg
 ---
 
 Esta Política de Privacidade explica como {{ site.title }} coleta, usa e protege as informações dos visitantes deste site.

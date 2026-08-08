@@ -3,6 +3,7 @@ layout: legal
 title: Termos de Uso
 permalink: /termos/
 updated: agosto de 2026
+img: post-example.jpg
 ---
 
 Ao acessar e utilizar este site, você concorda com os termos e condições descritos a seguir.

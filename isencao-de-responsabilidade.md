@@ -3,6 +3,7 @@ layout: legal
 title: Isenção de Responsabilidade
 permalink: /isencao-de-responsabilidade/
 updated: agosto de 2026
+img: promo-img.jpg
 ---
 
 As informações disponibilizadas neste site têm caráter exclusivamente informativo e não substituem orientação profissional especializada (técnica, jurídica, financeira ou de saúde, conforme o tema abordado).

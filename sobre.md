@@ -2,6 +2,7 @@
 layout: legal
 title: Sobre
 permalink: /sobre/
+img: we-in-rest.jpg
 ---
 
 Bem-vindo ao blog! Aqui você encontra conteúdo sobre tecnologia, curiosidades que parecem inúteis até o dia em que resolvem algum problema, e reflexões sobre assuntos do momento — sempre em busca de uma boa conversa, não só de uma boa notícia.
