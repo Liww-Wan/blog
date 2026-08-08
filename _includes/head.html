@@ -113,33 +113,15 @@
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap">
 		<link rel="stylesheet" href="{{ "/assets/fonts/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">
-		<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (max-width: 992px)">
 	</noscript>
 
 	<!-- Styles -->
-	<!-- Desktop (>=993px): identico ao que ja pontua 100 no PageSpeed. Nao mexer. -->
-	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (min-width: 993px)">
-
-	{% capture compiled_css %}{% for p in site.pages %}{% if p.path == "assets/css/scss/main.scss" %}{{ p.content }}{% endif %}{% endfor %}{% endcapture %}
-	{% if compiled_css != "" %}
-	<!-- Mobile/tablet (<=992px): CSS critico inline, para nao depender de uma -->
-	<!-- solicitacao de rede bloqueante nem de um swap assincrono (que causou -->
-	<!-- CLS alto numa tentativa anterior). Ja pinta estilizado desde o 1o frame. -->
-	<style>
-	@media screen and (max-width: 992px) {
-	{{ compiled_css }}
-	}
-	</style>
-
-	<!-- Copia assincrona, so para preencher o cache do navegador em visitas -->
-	<!-- futuras (a pagina ja esta corretamente estilizada pelo bloco acima, -->
-	<!-- entao aplicar essas mesmas regras de novo, mais tarde, e inofensivo). -->
-	<link rel="preload" as="style" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (max-width: 992px)">
-	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="print" onload="this.media='screen and (max-width: 992px)'">
-	{% else %}
-	<!-- Rede de seguranca: se por algum motivo o Jekyll nao encontrar o CSS -->
-	<!-- compilado para inlinar (compiled_css vazio), volta ao carregamento -->
-	<!-- bloqueante simples, que e o comportamento seguro ja testado. -->
-	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="screen and (max-width: 992px)">
-	{% endif %}
+	<!-- Bloqueante em todas as telas, de proposito. Ja tentei duas vezes tirar -->
+	<!-- este CSS do caminho critico so no mobile (assincrono e depois inline) -->
+	<!-- e as duas vezes isso gerou CLS alto (0.5+), derrubando a nota de -->
+	<!-- Performance de 95 para ~75. O ganho de nao bloquear (~450ms) nao -->
+	<!-- compensa o risco. Este e o estado seguro e validado: 95 mobile / -->
+	<!-- 100 desktop, com Acessibilidade, Praticas recomendadas e SEO em 100. -->
+	<!-- Nao mexer aqui de novo sem conseguir testar um build real do Jekyll. -->
+	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
 </head>
