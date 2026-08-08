@@ -1,0 +1,31 @@
+---
+layout: main
+---
+{% for post in paginator.posts %}
+<article class="post">
+  {% if post.img %}
+    <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
+      {% assign has_thumb = false %}
+      {% if post.img contains 'i-rest' or post.img contains 'how-to-start' or post.img contains 'software' or post.img contains 'workflow' %}
+        {% assign has_thumb = true %}
+        {% assign thumb = post.img | replace: '.webp', '-thumb.webp' %}
+      {% endif %}
+      <img
+        src="{{ site.baseurl }}/assets/img/{% if has_thumb %}{{ thumb }}{% else %}{{ post.img }}{% endif %}"
+        alt="{{ post.title }}"
+        width="720"
+        height="480"
+        {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+        decoding="async">
+    </a>
+  {% endif %}
+  <div class="post-content">
+    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
+  </div>
+</article>
+{% endfor %}
+
+{% include pagination.html %}

@@ -1,0 +1,132 @@
+<head>
+	<meta charset="utf-8">
+	<script>
+		// Apply the saved (or system) theme before first paint, to avoid a flash of the wrong theme.
+		(function () {
+			try {
+				var saved = localStorage.getItem('theme');
+				var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				document.documentElement.setAttribute('data-theme', theme);
+			} catch (e) {
+				document.documentElement.setAttribute('data-theme', 'light');
+			}
+		})();
+	</script>
+	<title>{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="{{ site.title }}" property="og:site_name">
+  {% if page.title %}
+    <meta content="{{ page.title }}" property="og:title">
+  {% else %}
+    <meta content="{{ site.title }}" property="og:title">
+  {% endif %}
+  {% if page.title %}
+    <meta content="article" property="og:type">
+  {% else %}
+    <meta content="website" property="og:type">
+  {% endif %}
+  {% if page.description %}
+    <meta content="{{ page.description }}" property="og:description">
+  {% else %}
+    <meta content="{{ site.description }}" property="og:description">
+  {% endif %}
+  {% if page.url %}
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+  {% endif %}
+  {% if page.date %}
+    <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+    <meta content="{{ site.url }}/about/" property="article:author">
+  {% endif %}
+  {% if page.img %}
+    <meta content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ page.img }}" property="og:image">
+  {% else %}
+    <meta content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.author-img }}" property="og:image">
+  {% endif %}
+  {% if page.categories %}
+    {% for category in page.categories limit:1 %}
+    <meta content="{{ category }}" property="article:section">
+    {% endfor %}
+  {% endif %}
+  {% if page.tags %}
+    {% for tag in page.tags %}
+    <meta content="{{ tag }}" property="article:tag">
+    {% endfor %}
+  {% endif %}
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@{{ site.site-twitter }}">
+    <meta name="twitter:creator" content="@{{ site.social-twitter }}">
+  {% if page.title %}
+    <meta name="twitter:title" content="{{ page.title }}">
+  {% else %}
+    <meta name="twitter:title" content="{{ site.title }}">
+  {% endif %}
+  {% if page.url %}
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+  {% endif %}
+  {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description }}">
+  {% else %}
+    <meta name="twitter:description" content="{{ site.description }}">
+  {% endif %}
+  {% if page.img %}
+    <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ page.img }}">
+  {% else %}
+    <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.author-img }}">
+  {% endif %}
+
+	<meta name="description" content="{{ page.description }}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+	<link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+	<link rel="shortcut icon" href="{{ "/assets/img/favicon/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="{{ "/assets/img/favicon/apple-touch-icon.png" | prepend: site.baseurl }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ "/assets/img/favicon/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ "/assets/img/favicon/apple-touch-icon-144x144.png" | prepend: site.baseurl }}">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+
+	<!-- Preconnect to critical third-party origins -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- Google Fonts - non-blocking load -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap"></noscript>
+
+	<!-- Critical CSS inline for faster first paint (minimal above-the-fold) -->
+	<style>
+		:root{--color-page-bg:#fbfbfb;--color-surface:#fff;--color-body-text:#515151;--color-heading:#333030;--color-accent:#263959}
+		[data-theme=dark]{--color-page-bg:#121212;--color-surface:#1c1c1c;--color-body-text:#cfcfcf;--color-heading:#f2f2f2;--color-accent:#7fa6e0}
+		html{line-height:1.15;-webkit-text-size-adjust:100%}
+		body{margin:0;font-family:Lato,Helvetica Neue,Helvetica,sans-serif;font-weight:400;background:var(--color-page-bg);color:var(--color-body-text)}
+		.wrapper{max-width:1250px;position:relative}
+		.sidebar{display:flex;flex-direction:column;justify-content:space-between;position:fixed;top:0;left:0;bottom:0;width:240px;height:100%;padding:20px 10px;background:var(--color-surface)}
+		.content-box{padding:20px;padding-left:260px;display:flex;flex-direction:row;flex-wrap:wrap}
+		.post{width:100%;margin-bottom:1.5rem;display:flex;min-height:11rem;border-radius:10px;overflow:hidden;background:var(--color-surface);box-shadow:0 1px 1px 0 rgba(31,35,46,.15)}
+		.post-thumbnail{display:block;overflow:hidden;width:30%;min-height:11rem}
+		.post-thumbnail img{width:100%;height:100%;object-fit:cover;display:block}
+		.post-content{padding:1rem;width:70%}
+		.post-title{margin:0 0 10px;font-size:30px;font-weight:400}
+		.post-title a{font-family:PT Serif,serif;text-decoration:none;color:var(--color-accent)}
+		@media (max-width:768px){.sidebar{position:relative;width:100%;height:auto}.content-box{padding-left:20px}}
+	</style>
+
+	<!-- Main stylesheet - non-blocking -->
+	<link rel="preload" as="style" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}"></noscript>
+
+	<!-- Minimal icon styles (replaces Font Awesome ~80KB) -->
+	<style>
+		.icon{display:inline-block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;vertical-align:-0.125em}
+		.theme-toggle .icon,.contact .icon{width:1.1em;height:1.1em}
+	</style>
+</head>
