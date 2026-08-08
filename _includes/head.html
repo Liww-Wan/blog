@@ -116,12 +116,5 @@
 	</noscript>
 
 	<!-- Styles -->
-	<!-- Bloqueante em todas as telas, de proposito. Ja tentei duas vezes tirar -->
-	<!-- este CSS do caminho critico so no mobile (assincrono e depois inline) -->
-	<!-- e as duas vezes isso gerou CLS alto (0.5+), derrubando a nota de -->
-	<!-- Performance de 95 para ~75. O ganho de nao bloquear (~450ms) nao -->
-	<!-- compensa o risco. Este e o estado seguro e validado: 95 mobile / -->
-	<!-- 100 desktop, com Acessibilidade, Praticas recomendadas e SEO em 100. -->
-	<!-- Nao mexer aqui de novo sem conseguir testar um build real do Jekyll. -->
 	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
 </head>

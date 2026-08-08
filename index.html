@@ -4,12 +4,7 @@ layout: main
 {% for post in paginator.posts %}
 <article class="post">
   {% if post.img %}
-    <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}">
-      <picture>
-        <source srcset="{{ "/assets/img/" | prepend: site.baseurl | append: post.img | replace: '.jpg', '-thumb.webp' }}" type="image/webp">
-        <img src="{{ "/assets/img/" | prepend: site.baseurl | append: post.img | replace: '.jpg', '-thumb.jpg' }}" alt="{{ post.title }}" width="720" height="480" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
-      </picture>
-    </a>
+    <a class="post-thumbnail" href="{{post.url | prepend: site.baseurl}}" aria-label="{{ post.title }}" style="background-image: url({{ "/assets/img/" | prepend: site.baseurl | append: post.img }});"></a>
   {% else %}
   {% endif %}
   <div class="post-content">
