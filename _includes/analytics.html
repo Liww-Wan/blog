@@ -1,8 +1,29 @@
+{% if site.analytics %}
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', '{{ site.analytics }}', 'auto');
-  ga('send', 'pageview');
+  (function () {
+    function loadAnalytics() {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.analytics }}', 'auto');
+      ga('send', 'pageview');
+    }
+
+    // Só carrega o analytics se o visitante já aceitou os cookies.
+    try {
+      if (localStorage.getItem('cookie-consent') === 'accepted') {
+        loadAnalytics();
+      }
+    } catch (e) {}
+
+    // Caso a escolha ainda não tenha sido feita no carregamento da página,
+    // o analytics é carregado assim que o consentimento for concedido.
+    document.addEventListener('cookieconsentchange', function (e) {
+      if (e.detail && e.detail.consent === 'accepted') {
+        loadAnalytics();
+      }
+    });
+  })();
 </script> <!-- End Analytics -->
+{% endif %}
