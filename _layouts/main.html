@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<aside class="sidebar" aria-label="Sobre e contato">
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </button>
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="{{site.baseurl}}/">
+          <picture>
+            <source srcset="{{ "/assets/img/" | prepend: site.baseurl | append: site.author-img | replace: '.jpg', '.webp' }}" type="image/webp">
+            <img src="{{site.baseurl}}/assets/img/{% if site.author-img %}{{site.author-img}}{% endif %}" alt="{{site.author}}" width="200" height="200" loading="eager" decoding="async">
+          </picture>
+        </a>
+      </div>
+      <div class="author-name">{{site.author}}</div>
+      <p>{{site.about-author}}</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contato</h3>
+      <ul>
+        {% if site.social-twitter %}
+          <li><a href="https://twitter.com/{{ site.social-twitter }}" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        {% else %}
+          <li><a href="https://twitter.com/artemsheludko_" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        {% endif %}
+        {% if site.social-facebook %}
+          <li><a href="https://facebook.com/{{ site.social-facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        {% else %}
+          <li><a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        {% endif %}
+        {% if site.social-github %}
+          <li class="github"><a href="http://github.com/{{site.social-github}}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        {% else %}
+          <li class="github"><a href="http://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        {% endif %}
+        {% if site.social-linkedin %}
+          <li class="linkedin"><a href="https://in.linkedin.com/in/{{site.social-linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        {% else %}
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        {% endif %}
+        {% if site.social-email %}
+          <li class="email"><a href="mailto:{{site.social-email}}" aria-label="Enviar e-mail"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+        {% else %}
+          <li class="email"><a href="mailto:example.david@blog.com" aria-label="Enviar e-mail"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+        {% endif %}
+      </ul>
+    </section> <!-- End Section Contact -->
+    <nav class="legal-links" aria-label="Links do site">
+      <a href="{{ site.baseurl }}/">Início</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="{{ site.baseurl }}/tags/">Tags</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="{{ site.baseurl }}/sobre/">Sobre</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="{{ site.baseurl }}/privacidade/">Privacidade</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="{{ site.baseurl }}/termos/">Diretrizes</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="{{ site.baseurl }}/isencao-de-responsabilidade/">Termos de Responsabilidade</a>
+    </nav>
+    <div class="copyright">
+      <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<main class="content-box clearfix">
+  {{ content }}
+</main>

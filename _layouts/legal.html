@@ -1,0 +1,30 @@
+---
+layout: main
+---
+<article class="article-page">
+  <div class="page-content">
+    {% if page.img %}
+    <div class="page-cover-image">
+      <figure>
+        <picture>
+          <source srcset="{{ "/assets/img/" | prepend: site.baseurl | append: page.img | replace: '.jpg', '.webp' }}" type="image/webp">
+          <img class="page-image" src="{{ "/assets/img/" | prepend: site.baseurl | append: page.img }}" alt="{{ page.title }}" width="1280" height="500" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        {% if page.fig-caption %}
+          <figcaption>{{page.fig-caption}}</figcaption>
+        {% endif %}
+      </figure>
+    </div> <!-- End Page Cover Image -->
+    {% else %}
+    {% endif %}
+    <div class="wrap-content legal-page">
+      <header class="header-page">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.updated %}
+          <div class="page-date"><span>Última atualização: {{ page.updated }}</span></div>
+        {% endif %}
+      </header>
+      {{ content | markdownify }}
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->

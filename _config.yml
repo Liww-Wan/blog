@@ -1,0 +1,54 @@
+title: Hello, world! I'm David Freeman
+
+description: >
+  Nem toda informação muda sua vida. Mas algumas vão render uma boa conversa.
+  Curiosidades, tecnologia e muito conteúdo fora do óbvio.
+
+permalink: ':title/'
+
+baseurl: "/blog"
+url: "https://liww-wan.github.io"
+
+site-twitter:
+
+# Author Settings
+author: Liw-Wlin
+author-img: david-freeman.jpg
+about-author: >
+  Escrevo sobre tecnologia, curiosidades inúteis que viram úteis e a eterna disputa entre café e sono.
+
+social-twitter:
+social-facebook:
+social-github: artemsheludko
+social-linkedin:
+social-email:
+
+# Comments (giscus)
+giscus-repo: Liww-Wan/blog
+giscus-repo-id: R_kgDOTtdPOQ
+giscus-category: Comentários
+giscus-category-id: DIC_kwDOTtdPOc4DCo-c
+
+# Tracker
+analytics:
+
+# Build Settings
+markdown: kramdown
+
+sass:
+  sass_dir: assets/css/scss
+  style: compressed
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude:
+  - node_modules
+  - gulpfile.js
+  - package.json
+  - yarn.lock
