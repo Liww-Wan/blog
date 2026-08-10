@@ -102,19 +102,16 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-	{% if page.url == '/' or page.url == '/index.html' %}
-	<!-- The first card is the mobile LCP candidate. Start it before parsing the body. -->
-	<link rel="preload" as="image" href="{{ '/assets/img/i-rest-thumb.webp' | prepend: site.baseurl }}" type="image/webp" fetchpriority="high">
-	{% endif %}
+	<!-- Google Fonts: carregado sem bloquear a renderizacao -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap" media="print" onload="this.media='all'">
 
-	<!-- Fonts are non-critical. optional prevents a late font swap from moving text. -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=optional" media="print" onload="this.media='all'">
-
-	<!-- Font Awesome is decorative and must not compete with the LCP image. -->
+	<!-- Font Awesome: carregado sem bloquear a renderizacao (o site so usa ~8 icones) -->
+	<link rel="preload" as="style" href="{{ "/assets/fonts/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">
 	<link rel="stylesheet" href="{{ "/assets/fonts/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all'">
 
 	<noscript>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=optional">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap">
 		<link rel="stylesheet" href="{{ "/assets/fonts/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">
 	</noscript>
 
